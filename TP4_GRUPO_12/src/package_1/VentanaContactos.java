@@ -13,6 +13,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 
 public class VentanaContactos extends JFrame {
@@ -80,21 +82,25 @@ public class VentanaContactos extends JFrame {
 		txtnombre.setBounds(135, 69, 258, 24);
 		contentPane.add(txtnombre);
 		txtnombre.setColumns(10);
+		txtnombre.addMouseListener(new eventoTxt(txtnombre));
 		
 		txtapellido = new JTextField();
 		txtapellido.setColumns(10);
 		txtapellido.setBounds(135, 115, 258, 24);
 		contentPane.add(txtapellido);
+		txtapellido.addMouseListener(new eventoTxt(txtapellido));
 		
 		txttelefono = new JTextField();
 		txttelefono.setColumns(10);
 		txttelefono.setBounds(135, 160, 258, 24);
 		contentPane.add(txttelefono);
+		txttelefono.addMouseListener(new eventoTxt(txttelefono));
 		
 		txtfechaNac = new JTextField();
 		txtfechaNac.setColumns(10);
 		txtfechaNac.setBounds(135, 206, 258, 24);
 		contentPane.add(txtfechaNac);
+		txtfechaNac.addMouseListener(new eventoTxt(txtfechaNac));
 		
 		JLabel lbldatosingresdos = new JLabel("Los datos ingresados fueron:");
 		lbldatosingresdos.setBounds(10, 331, 172, 14);
@@ -149,6 +155,45 @@ public class VentanaContactos extends JFrame {
 				txtfechaNac.setBackground(Color.white);
 			}
 		});
+		
+	}
+}
+
+class eventoTxt implements MouseListener{
+	
+	private JTextField txt;
+	
+	public eventoTxt(JTextField control) {
+		txt = control;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		txt.setBackground(Color.white);
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }
