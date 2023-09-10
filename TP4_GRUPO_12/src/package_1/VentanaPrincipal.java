@@ -55,6 +55,12 @@ public class VentanaPrincipal extends JFrame
 		contentPane.add(btnEjercicio1);
 		
 		JButton btnEjercicio2 = new JButton("Ejercicio 2");
+		btnEjercicio2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaPromedio ventana = new VentanaPromedio();
+				ventana.setVisible(true);
+			}
+		});
 		btnEjercicio2.setBounds(133, 167, 125, 31);
 		contentPane.add(btnEjercicio2);
 		
