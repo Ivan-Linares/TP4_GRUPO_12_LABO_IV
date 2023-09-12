@@ -34,6 +34,7 @@ public class VentanaPromedio extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPromedio () {
+		setEnabled(false);
 		setTitle("Promedio");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(150, 150, 506, 463);
@@ -87,23 +88,73 @@ public class VentanaPromedio extends JFrame {
 		pnlNotas.add(comboBox);
 		
 		JButton btnCalcular = new JButton("Calcular");
+		btnCalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				 String nota1Text = txtNota1.getText();
+				 double nota1 = Double.parseDouble(nota1Text);
+				 
+				 String nota2Text = txtNota2.getText();
+				 double nota2 = Double.parseDouble(nota2Text);
+				 
+				 String nota3Text = txtNota3.getText();
+				 double nota3 = Double.parseDouble(nota3Text);
+				 
+				 ComboItem selectedComboItem = (ComboItem) comboBox.getSelectedItem();				  
+		         String selectedValue = selectedComboItem.getValue();		           		           
+		         String valueGuardado = selectedValue;
+		         
+		         double promedio = (nota1 + nota2 + nota3) / 3.0;
+		         
+		         txtPromedio.setText(String.valueOf(promedio));
+		         
+		     
+				if((nota1 >= 6 && nota2 >= 6 && nota3 >= 6) && selectedComboItem != null && valueGuardado == "1") {
+					
+					
+					if(nota1 >= 8 && nota2 >= 8 && nota3 >= 8) {
+						txtCondicion.setText("promocionado");
+					}
+					
+					else {
+						txtCondicion.setText("Regular");
+					}
+				}
+				
+				else {		
+					txtCondicion.setText("libre");
+				}
+				
+			}
+		});
 		btnCalcular.setForeground(SystemColor.desktop);
 		btnCalcular.setBounds(359, 57, 89, 23);
 		contentPane.add(btnCalcular);
 		
 		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				 txtNota1.setText("");
+				 txtNota2.setText("");;
+				 txtNota3.setText("");;
+				 txtPromedio.setText("");
+				 txtCondicion.setText("");
+				
+			}
+		});
 		btnNuevo.setBounds(359, 103, 89, 23);
 		contentPane.add(btnNuevo);
 		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(359, 154, 89, 23);
 		btnSalir.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				
 				dispose();
 			}
 		});
+		btnSalir.setBounds(359, 154, 89, 23);
 		contentPane.add(btnSalir);
 		
 		JPanel pnlResultado = new JPanel();

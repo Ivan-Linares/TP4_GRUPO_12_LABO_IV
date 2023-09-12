@@ -28,6 +28,7 @@ public class VentanaContactos extends JFrame {
 	private JTextField txtapellido;
 	private JTextField txttelefono;
 	private JTextField txtfechaNac;
+	
 
 	/**
 	 * Launch the application.
